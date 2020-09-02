@@ -15,16 +15,19 @@ namespace authors
             var repository = new AuthorRepository();
             var response = repository.GetData(1,3);
 
-            var userName = GetUsernameWithHighestCommentCount(response.data);
+            if(response != null) {
+                var userName = GetUsernameWithHighestCommentCount(response.data);
 
-            Console.WriteLine("Author with the highest comment count is {0}", userName);
+                Console.WriteLine("Author with the highest comment count is {0}", userName);
 
-            var authorNamesWithHighSubmittion = GetUsernames(response.data, 50);
+                var authorNamesWithHighSubmittion = GetUsernames(response.data, 50);
 
-            foreach (var authorName in authorNamesWithHighSubmittion)
-            {
-                Console.WriteLine("{0} is an active author", authorName);
+                foreach (var authorName in authorNamesWithHighSubmittion)
+                {
+                    Console.WriteLine("{0} is an active author", authorName);
+                }
             }
+
 
         }
 
